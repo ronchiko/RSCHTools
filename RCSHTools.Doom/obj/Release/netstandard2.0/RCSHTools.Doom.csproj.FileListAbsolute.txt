@@ -1,0 +1,10 @@
+C:\Users\ronmh\Documents\Other Projects\C#\RCSHTools.Doom\obj\Release\netstandard2.0\RCSHTools.Doom.csprojAssemblyReference.cache
+C:\Users\ronmh\Documents\Other Projects\C#\RCSHTools.Doom\obj\Release\netstandard2.0\RCSHTools.Doom.AssemblyInfoInputs.cache
+C:\Users\ronmh\Documents\Other Projects\C#\RCSHTools.Doom\obj\Release\netstandard2.0\RCSHTools.Doom.AssemblyInfo.cs
+C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Doom\netstandard2.0\RCSHTools.Doom.deps.json
+C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Doom\netstandard2.0\RCSHTools.Doom.dll
+C:\Users\ronmh\Documents\Other Projects\C#\RCSHTools.Doom\obj\Release\netstandard2.0\RCSHTools.Doom.csproj.CopyComplete
+C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Doom\netstandard2.0\RCSHTools.Doom.pdb
+C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Doom\netstandard2.0\RCSHTools.Doom.xml
+C:\Users\ronmh\Documents\Other Projects\C#\RCSHTools.Doom\obj\Release\netstandard2.0\RCSHTools.Doom.dll
+C:\Users\ronmh\Documents\Other Projects\C#\RCSHTools.Doom\obj\Release\netstandard2.0\RCSHTools.Doom.pdb

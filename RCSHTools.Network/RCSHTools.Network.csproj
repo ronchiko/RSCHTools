@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Network\RCSHTools.Network.xml</DocumentationFile>
+    <OutputPath>C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Network\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="RCSHTools.Common">
+      <HintPath>..\RCSHTools.Common\bin\Debug\netstandard2.0\RCSHTools.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

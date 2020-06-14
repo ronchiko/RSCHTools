@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Doom\RCSHTools.Doom.xml</DocumentationFile>
+    <OutputPath>C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Doom\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RCSHTools.Common">
+      <HintPath>..\RCSHTools.Common\bin\Debug\netstandard2.0\RCSHTools.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>RCSHTools</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Common\</OutputPath>
+    <DocumentationFile>C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Common\RCSHTools.Common.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\ronmh\Documents\Other Projects\RSCHTools\RSCHTools\RCSHTools.Common\RCSHTools.Common.xml</DocumentationFile>
+    <OutputPath></OutputPath>
+  </PropertyGroup>
+
+</Project>

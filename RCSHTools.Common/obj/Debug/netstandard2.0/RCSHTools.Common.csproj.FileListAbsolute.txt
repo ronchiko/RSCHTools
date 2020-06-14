@@ -1,0 +1,8 @@
+C:\Users\ronmh\Documents\Other Projects\RSCHTools\RSCHTools\RCSHTools.Common\bin\Debug\netstandard2.0\RCSHTools.Common.deps.json
+C:\Users\ronmh\Documents\Other Projects\RSCHTools\RSCHTools\RCSHTools.Common\bin\Debug\netstandard2.0\RCSHTools.Common.dll
+C:\Users\ronmh\Documents\Other Projects\RSCHTools\RSCHTools\RCSHTools.Common\bin\Debug\netstandard2.0\RCSHTools.Common.pdb
+C:\Users\ronmh\Documents\Other Projects\RSCHTools\RSCHTools\RCSHTools.Common\obj\Debug\netstandard2.0\RCSHTools.Common.csprojAssemblyReference.cache
+C:\Users\ronmh\Documents\Other Projects\RSCHTools\RSCHTools\RCSHTools.Common\obj\Debug\netstandard2.0\RCSHTools.Common.AssemblyInfoInputs.cache
+C:\Users\ronmh\Documents\Other Projects\RSCHTools\RSCHTools\RCSHTools.Common\obj\Debug\netstandard2.0\RCSHTools.Common.AssemblyInfo.cs
+C:\Users\ronmh\Documents\Other Projects\RSCHTools\RSCHTools\RCSHTools.Common\obj\Debug\netstandard2.0\RCSHTools.Common.dll
+C:\Users\ronmh\Documents\Other Projects\RSCHTools\RSCHTools\RCSHTools.Common\obj\Debug\netstandard2.0\RCSHTools.Common.pdb

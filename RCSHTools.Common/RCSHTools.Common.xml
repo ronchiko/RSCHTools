@@ -1,0 +1,1385 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RCSHTools.Common</name>
+    </assembly>
+    <members>
+        <member name="T:RCSHTools.ArrayMask`1">
+            <summary>
+            Masks an array
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:RCSHTools.ArrayMask`1.start">
+            <summary>
+            Where the mask starts
+            </summary>
+        </member>
+        <member name="F:RCSHTools.ArrayMask`1.end">
+            <summary>
+            Where the mask ends
+            </summary>
+        </member>
+        <member name="F:RCSHTools.ArrayMask`1.array">
+            <summary>
+            The masked array
+            </summary>
+        </member>
+        <member name="P:RCSHTools.ArrayMask`1.Length">
+            <summary>
+            The length of the mask
+            </summary>
+        </member>
+        <member name="P:RCSHTools.ArrayMask`1.ArrayLength">
+            <summary>
+            The length of the array unmasked
+            </summary>
+        </member>
+        <member name="P:RCSHTools.ArrayMask`1.Item(System.Int32)">
+            <summary>
+            Modifies an item in the array relative to the mask range
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.ArrayMask`1.#ctor(`0[],System.Int32,System.Int32)">
+            <summary>
+            Creates a new array mask from an existing array
+            </summary>
+            <param name="array">Array to mask</param>
+            <param name="start">Where does the mask start</param>
+            <param name="end">Where does the mask end</param>
+        </member>
+        <member name="M:RCSHTools.ArrayMask`1.IndexOf(`0)">
+            <summary>
+            Returns the index of the first accurnce of an item in the mask
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.ArrayMask`1.Resize(System.Int32)">
+            <summary>
+            Resized the mask
+            </summary>
+            <param name="length"></param>
+        </member>
+        <member name="M:RCSHTools.ArrayMask`1.System#IEquatable{RCSHTools#ArrayMask{T}}#Equals(RCSHTools.ArrayMask{`0})">
+            <summary>
+            Compares this mask to another mask
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.ArrayMask`1.System#IEquatable{T[]}#Equals(`0[])">
+            <summary>
+            Compares this mask to another array
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.ArrayMask`1.System#ICloneable#Clone">
+            <summary>
+            Clones this mask
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.ArrayMask`1.RCSHTools#IMask{T}#Mask(System.Int32,System.Int32)">
+            <summary>
+            Creates a mask fro this mask
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.ArrayMask`1.ArrayMaskEnumerator">
+            <summary>
+            Enumarator for an array mask
+            </summary>
+        </member>
+        <member name="T:RCSHTools.ArrayExt">
+            <summary>
+            Extension methods for arrays and such
+            </summary>
+        </member>
+        <member name="M:RCSHTools.ArrayExt.BinarySearch``1(``0[],``0,System.Comparison{``0})">
+            <summary>
+            preforms binary search in an array
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="target"></param>
+            <param name="comparison"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.ArrayExt.BinarySearch``1(``0[],System.Int32,System.Int32,``0,System.Comparison{``0})">
+            <summary>
+            Binary search in a sorted array
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="start"></param>
+            <param name="end"></param>
+            <param name="target"></param>
+            <param name="comparison"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.ArrayExt.Sort``1(``0[],RCSHTools.ArraySortAlgorithem,System.Comparison{``0})">
+            <summary>
+            Sorts an array using a specific algorithem
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="algorithem"></param>
+            <param name="comparison"></param>
+        </member>
+        <member name="M:RCSHTools.ArrayExt.Swap``1(``0[],System.Int32,System.Int32)">
+            <summary>
+            Swaps 2 element in an array
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="i"></param>
+            <param name="j"></param>
+        </member>
+        <member name="M:RCSHTools.ArrayExt.Shuffle``1(``0[])">
+            <summary>
+            Shuffles the elements in the array
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+        </member>
+        <member name="M:RCSHTools.ArrayExt.Printable``1(``0[])">
+            <summary>
+            Returns a string represnetation of the elements in the array
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.ArrayExt.Mask(System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates a sub mask for a <see cref="T:RCSHTools.StringMask"/>
+            </summary>
+            <param name="str"></param>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.ArrayExt.Mask``1(``0[],System.Int32,System.Int32)">
+            <summary>
+            Creates a sub mask for an <see cref="T:RCSHTools.ArrayMask`1"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.ArrayExt.Reverse``1(``0[])">
+            <summary>
+            Reverses the array elements (without coping)
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="array"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.ArraySortAlgorithem">
+            <summary>
+            Represents an array sort algorithem
+            </summary>
+        </member>
+        <member name="F:RCSHTools.ArraySortAlgorithem.Quick">
+            <summary>
+            Quick sort
+            </summary>
+        </member>
+        <member name="F:RCSHTools.ArraySortAlgorithem.Bubble">
+            <summary>
+            Buble sort
+            </summary>
+        </member>
+        <member name="F:RCSHTools.ArraySortAlgorithem.Merge">
+            <summary>
+            Merge sort
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BidirectionalHashMap`2.Append(`0,`1)">
+            <summary>
+            Adds an item to the map
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:RCSHTools.Hashes">
+            <summary>
+            Has global hashing functions
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Hashes.Sha512(System.String)">
+            <summary>
+            Compute SHA512 hash on a string
+            </summary>
+            <param name="msg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Hashes.Sha512(System.Byte[])">
+            <summary>
+            Compute a SHA512 hash
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.IIndexable">
+            <summary>
+            A structure that can be compressed an decompressed with an <see cref="T:RCSHTools.IndexCompressor"/>
+            </summary>
+        </member>
+        <member name="M:RCSHTools.IIndexable.Read">
+            <summary>
+            Reads the items from the structure
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.IIndexable.Write(System.UInt32[])">
+            <summary>
+            Writes to the structure
+            </summary>
+            <param name="data"></param>
+        </member>
+        <member name="T:RCSHTools.IMask`1">
+            <summary>
+            Provides masking support
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:RCSHTools.IMask`1.Length">
+            <summary>
+            The length of the mask
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IMask`1.Item(System.Int32)">
+            <summary>
+            Get the item in an index relative to the masks start
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.IMask`1.Mask(System.Int32,System.Int32)">
+            <summary>
+            Creates a sub-mask of this mask
+            </summary>
+            <param name="from"></param>
+            <param name="to"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.IndexCompressor">
+            <summary>
+            Compresses an array of values to an unsigned long.
+            The maximum values of each element must be determent, and the values must be greater then or equal to 0.
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IndexCompressor.MaxValue">
+            <summary>
+            The maximum value this compressor can reach
+            </summary>
+        </member>
+        <member name="M:RCSHTools.IndexCompressor.#ctor(System.UInt32[])">
+            <summary>
+            
+            </summary>
+            <param name="dimensionsSizes">The maximum size of each dimension</param>
+        </member>
+        <member name="M:RCSHTools.IndexCompressor.Compress(System.UInt32[])">
+            <summary>
+            Compresses an array of values
+            </summary>
+            <param name="values"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.IndexCompressor.Decompress(System.UInt64@)">
+            <summary>
+            Returns an array of values out of a compressed value
+            </summary>
+            <param name="compressed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.IndexCompressor.Decompress(System.UInt64@,RCSHTools.IIndexable@)">
+            <summary>
+            The compress a value into a <see cref="T:RCSHTools.IIndexable"/>
+            </summary>
+            <param name="value"></param>
+            <param name="indexable"></param>
+        </member>
+        <member name="T:RCSHTools.MathR">
+            <summary>
+            Provides simple mathematical operations
+            </summary>
+        </member>
+        <member name="F:RCSHTools.MathR.PI">
+            <summary>
+            PI
+            </summary>
+        </member>
+        <member name="F:RCSHTools.MathR.Rad2Deg">
+            <summary>
+            Converts Radians to Degress
+            </summary>
+        </member>
+        <member name="F:RCSHTools.MathR.Deg2Rad">
+            <summary>
+            Converts Degrees to Radians
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.Pow(System.Double,System.Double)">
+            <summary>
+             Raises a number by a power
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.Pow(System.Single,System.Single)">
+            <summary>
+             Raises a number by a power
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.Sqrt(System.Single)">
+            <summary>
+             Square root of a number
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.Sqrt(System.Double)">
+            <summary>
+             Square root of a number
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.Abs(System.Double)">
+            <summary>
+             The absulute value of a number
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.Abs(System.Single)">
+            <summary>
+             The absulute value of a number
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.Lerp(System.Single,System.Single,System.Single)">
+            <summary>
+             Linearly interpolates between 2 values
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.Clamp(System.Single,System.Single,System.Single)">
+            <summary>
+            Clamps a value between 2 values
+            </summary>
+            <param name="v"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.MathR.Clamp(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.MathR.Clamp(System.Single,System.Single,System.Single)"/>
+            </summary>
+            <param name="v"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.MathR.Smoothstep(System.Single,System.Single,System.Single)">
+            <summary>
+            Computes a smoothstep operation
+            </summary>
+            <param name="x"></param>
+            <param name="edge0"></param>
+            <param name="edge1"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.MathR.Smoothstep(System.Single)">
+            <summary>
+            Computes <see cref="M:RCSHTools.MathR.Smoothstep(System.Single,System.Single,System.Single)"/> between 0 and 1
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.MathR.RandomRange(System.Single,System.Single)">
+            <summary>
+             Gets a float in the given range
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.RandomRange(System.Int32,System.Int32)">
+            <summary>
+             Gets an int in the given range
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.PerlinNoise(System.Single,System.Single,System.Single)">
+            <summary>
+             3 Dimesional perlin noise
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.PerlinNoise(System.Single,System.Single)">
+            <summary>
+             2 Dimesional perlin noise (z = 0)
+            </summary>
+        </member>
+        <member name="M:RCSHTools.MathR.Rotate(System.Int64,System.Int32)">
+            <summary>
+            Rotates a long value
+            </summary>
+            <param name="x"></param>
+            <param name="l"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.MathR.Maj(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.MathR.Ch(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.MathR.Sigma0(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.MathR.Sigma1(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.RecordAction">
+            <summary>
+            Records the duration of an action
+            </summary>
+        </member>
+        <member name="M:RCSHTools.RecordAction.#ctor(System.Action)">
+            <summary>
+            Runs an action and records its time
+            </summary>
+        </member>
+        <member name="M:RCSHTools.RecordAction.Log(System.String)">
+            <summary>
+            Logs to the console a message so %s is replaces with the time in seconds and %t is replaces with in milliseconds
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:RCSHTools.RGB">
+            <summary>
+            Represents an RGB color
+            </summary>
+        </member>
+        <member name="P:RCSHTools.RGB.Red">
+            <summary>
+            The red channel of the image
+            </summary>
+        </member>
+        <member name="P:RCSHTools.RGB.Green">
+            <summary>
+            The green channel of the image
+            </summary>
+        </member>
+        <member name="P:RCSHTools.RGB.Blue">
+            <summary>
+            The blue channel of the image
+            </summary>
+        </member>
+        <member name="M:RCSHTools.RGB.#ctor(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Creates an RGB color
+            </summary>
+            <param name="r"></param>
+            <param name="g"></param>
+            <param name="b"></param>
+        </member>
+        <member name="M:RCSHTools.RGB.#ctor(System.Int32)">
+            <summary>
+            Creates an RGB color from an compressed rgb
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="M:RCSHTools.RGB.ToInt">
+            <summary>
+            Returns the color as a single integer value
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.RGB.ToString">
+            <summary>
+            Returns a string of the color
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.RGBA">
+            <summary>
+            Represents an RGBA color
+            </summary>
+        </member>
+        <member name="P:RCSHTools.RGBA.Red">
+            <summary>
+            The red channel of the image
+            </summary>
+        </member>
+        <member name="P:RCSHTools.RGBA.Green">
+            <summary>
+            The green channel of the image
+            </summary>
+        </member>
+        <member name="P:RCSHTools.RGBA.Blue">
+            <summary>
+            The blue channel of the image
+            </summary>
+        </member>
+        <member name="P:RCSHTools.RGBA.Alpha">
+            <summary>
+            The alpha channel of the image
+            </summary>
+        </member>
+        <member name="M:RCSHTools.RGBA.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Creates an RGB color
+            </summary>
+            <param name="r"></param>
+            <param name="g"></param>
+            <param name="b"></param>
+            <param name="a"></param>
+        </member>
+        <member name="M:RCSHTools.RGBA.#ctor(System.Int32)">
+            <summary>
+            Creates an RGB color from an compressed rgb
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="M:RCSHTools.RGBA.ToInt">
+            <summary>
+            Returns the color as a single integer value
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.RGBA.ToString">
+            <summary>
+            Returns a string of the color
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.RGBA.op_Implicit(RCSHTools.RGB)~RCSHTools.RGBA">
+            <summary>
+            Creates a RGBA color from a RGB color
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="T:RCSHTools.StringMask">
+            <summary>
+            Masks a string, and allow easier access to functionallies in that range, this mask only allows for reading functionalities
+            </summary>
+        </member>
+        <member name="P:RCSHTools.StringMask.Length">
+            <summary>
+            Length of the masked string
+            </summary>
+        </member>
+        <member name="P:RCSHTools.StringMask.IsEmpty">
+            <summary>
+            Is this string an empty string
+            </summary>
+        </member>
+        <member name="P:RCSHTools.StringMask.Item(System.Int32)">
+            <summary>
+            Gets a char by its index relative to the mask start
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.#ctor(System.String)">
+            <summary>
+            Contructs a new string mask that contains the whole string
+            </summary>
+            <param name="str"></param>
+        </member>
+        <member name="M:RCSHTools.StringMask.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Constructs a new string mask from a given coordinates
+            </summary>
+            <param name="str"></param>
+            <param name="start"></param>
+            <param name="end"></param>
+        </member>
+        <member name="M:RCSHTools.StringMask.IndexOf(System.Char)">
+            <summary>
+            Finds the first occurnce of a char in masked string
+            </summary>
+            <param name="c">Character to find</param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.IndexOf(System.Char,System.Int32)">
+            <summary>
+            Finds the first occurnce of a char in masked string from a given index
+            </summary>
+            <param name="c">Character to find</param>
+            <param name="start">Start of search</param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.IndexOf(System.Char,System.Int32,System.Int32)">
+            <summary>
+            Gets the index of a character in the masked string
+            </summary>
+            <param name="c">Character to find</param>
+            <param name="start">Where to start</param>
+            <param name="count">Whick occurnce to select</param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.StartsWith(System.String)">
+            <summary>
+            Returns true if the mask starts with this string
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.EndsWith(System.String)">
+            <summary>
+            Returns true if the mask ends with this string
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.Contains(System.String)">
+            <summary>
+            Checks if a string contains a sub string
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.ToString">
+            <summary>
+            Returns a copy of the string of this mask
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.TrimStart">
+            <summary>
+            Removes all white space characters from the start of the mask
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.TrimEnd">
+            <summary>
+            Removes all white space characters from the end of the mask
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.Trim">
+            <summary>
+            Removes all white space characters from the start and the end of the mask
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.Split(System.Collections.Generic.IEnumerable{System.String},System.Int32,System.StringSplitOptions)">
+            <summary>
+            Splits the string using a string a seperators
+            </summary>
+            <param name="strs"></param>
+            <param name="count"></param>
+            <param name="stringSplitOptions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.Equals(System.String)">
+            <summary>
+            Is this mask equals to another string
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.Equals(RCSHTools.StringMask)">
+            <summary>
+            Is this mask equals to another string mask
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.StringMask.Clone">
+            <summary>
+            Clones this string array
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Utilities">
+            <summary>
+            Provides gerenal utility functions
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Utilities.bit(System.Int32,System.Int32)">
+            <summary>
+            Gets a bit by its index
+            </summary>
+            <param name="v"></param>
+            <param name="bindex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Utilities.bit(System.UInt32,System.Int32)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Utilities.bit(System.Int32,System.Int32)"/>
+            </summary>
+            <param name="v"></param>
+            <param name="bindex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Utilities.round(System.Single,System.Int32)">
+            <summary>
+            Rounds a floating point
+            </summary>
+            <param name="f"></param>
+            <param name="post"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Utilities.CheckBit(System.Int32,System.Int32)">
+            <summary>
+            Checks if a bit is active
+            </summary>
+            <param name="v"></param>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Utilities.SetBit(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Sets a bit in the array
+            </summary>
+            <param name="v"></param>
+            <param name="index"></param>
+            <param name="active"></param>
+        </member>
+        <member name="M:RCSHTools.Utilities.Flip(System.Int32)">
+            <summary>
+            Flips an integer value (Little Endian - Big Endian) 
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Vector2.Angle(RCSHTools.Vector2,RCSHTools.Vector2)">
+            <summary>
+             Returns the angle between 2 vector2 (in degrees)
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Vector3.Dot(RCSHTools.Vector3,RCSHTools.Vector3)">
+            <summary>
+             Returns the dot product of 2 vectors
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Vector3.Angle(RCSHTools.Vector3,RCSHTools.Vector3)">
+            <summary>
+             Returns the angle between 2 vector2 (in degrees)
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Vector3.Lerp(RCSHTools.Vector3,RCSHTools.Vector3,System.Single)">
+            <summary>
+             Linearly interpolates between 2 vectors
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Noise3D">
+            <summary>
+             Base class for 3d noise generation
+            </summary>
+        </member>
+        <member name="T:RCSHTools.RNG">
+            <summary>
+             An object that can generate random numbers
+            </summary>
+        </member>
+        <member name="M:RCSHTools.RNG.#ctor(System.Int32)">
+            <summary>
+            Creates a new RNG object with a given seed
+            </summary>
+            <param name="seed">Seed of the object</param>
+        </member>
+        <member name="M:RCSHTools.RNG.Read(System.Int32,System.Int32)">
+            <summary>
+            Reads bytes from the binary string and transforms them into an integer
+            </summary>
+            <param name="start">Where to start reading from</param>
+            <param name="amount">Amount of bits to read</param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.RNG.Get">
+            <summary>
+            Gets a random integer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.RNG.Get(System.UInt32)">
+            <summary>
+            Gets a random integer between max
+            </summary>
+            <param name="max">Maximum value</param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.RNG.Get(System.Int32,System.Int32)">
+            <summary>
+            Gets a number between min and max
+            </summary>
+            <param name="min">Minimum value</param>
+            <param name="max">Maximum value</param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.RNG.GetF">
+            <summary>
+            Gets a random float between 0 and 1
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.RNG.GetF(System.Single,System.Single)">
+            <summary>
+            Gets a random float between min and max
+            </summary>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.ArgumentCheckers">
+            <summary>
+            Collection of common <see cref="T:System.Predicate`1"/> to be used in a <see cref="T:RCSHTools.ArgumentHandler"/>
+            </summary>
+        </member>
+        <member name="P:RCSHTools.ArgumentCheckers.Any">
+            <summary>
+            Accepts anything
+            </summary>
+        </member>
+        <member name="P:RCSHTools.ArgumentCheckers.Integer">
+            <summary>
+            Accepts integers
+            </summary>
+        </member>
+        <member name="P:RCSHTools.ArgumentCheckers.UnsignedInteger">
+            <summary>
+            Accepts unsigned integers
+            </summary>
+        </member>
+        <member name="P:RCSHTools.ArgumentCheckers.Float">
+            <summary>
+            Accepts floats
+            </summary>
+        </member>
+        <member name="P:RCSHTools.ArgumentCheckers.Hex">
+            <summary>
+            Accepts hexadecimal values
+            </summary>
+        </member>
+        <member name="T:RCSHTools.ArgumentHandler">
+            <summary>
+            Adds customizbilty for parsing command line arguments
+            </summary>
+        </member>
+        <member name="M:RCSHTools.ArgumentHandler.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new empty argument handler
+            </summary>
+            <param name="command">Name of the command</param>
+            <param name="description"></param>
+        </member>
+        <member name="M:RCSHTools.ArgumentHandler.AddIndexedArguement(System.String,System.Type,System.Predicate{System.String},System.String)">
+            <summary>
+            Adds an indexed argument to the handler
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+            <param name="checker"></param>
+            <param name="help"></param>
+        </member>
+        <member name="M:RCSHTools.ArgumentHandler.AddFlag(System.String,System.String)">
+            <summary>
+            Adds a flag to the handler
+            </summary>
+            <param name="flag"></param>
+            <param name="help"></param>
+        </member>
+        <member name="M:RCSHTools.ArgumentHandler.AddArgument(System.String,System.Type,System.Predicate{System.String},System.String,System.String)">
+            <summary>
+            Adds an optional argument
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+            <param name="checker"></param>
+            <param name="defaultValue"></param>
+            <param name="help"></param>
+        </member>
+        <member name="M:RCSHTools.ArgumentHandler.PrintArguments(System.Boolean)">
+            <summary>
+            Prints the argument detail of this handler
+            </summary>
+        </member>
+        <member name="M:RCSHTools.ArgumentHandler.PrintHeader">
+            <summary>
+            Prints the command header
+            </summary>
+        </member>
+        <member name="M:RCSHTools.ArgumentHandler.PrintHelp">
+            <summary>
+            Prints the help to the console
+            </summary>
+        </member>
+        <member name="M:RCSHTools.ArgumentHandler.Parse(System.String[])">
+            <summary>
+            Parses the arguments
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.IArgument">
+            <summary>
+            Represents an argument
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IArgument.Type">
+            <summary>
+            The type of the argument
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IArgument.Name">
+            <summary>
+            The name of the argument
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IArgument.Help">
+            <summary>
+            Provides help on this argument
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IArgument.IsIndexed">
+            <summary>
+            Is this argument an indexed argument
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IArgument.IsFlag">
+            <summary>
+            Is this argument a flag
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IArgument.Checker">
+            <summary>
+            Checks if an argument is valid
+            </summary>
+        </member>
+        <member name="M:RCSHTools.IArgument.TryGet(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.IndexedArgument">
+            <summary>
+            An argument that must be inputed into the call
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IndexedArgument.Name">
+            <summary>
+            <inheritdoc cref="P:RCSHTools.IArgument.Name"/>
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IndexedArgument.Help">
+            <summary>
+            <inheritdoc cref="P:RCSHTools.IArgument.Help"/>
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IndexedArgument.Checker">
+            <summary>
+            <inheritdoc cref="P:RCSHTools.IArgument.Checker"/>
+            </summary>
+        </member>
+        <member name="P:RCSHTools.IndexedArgument.Type">
+            <summary>
+            The type of the variable
+            </summary>
+        </member>
+        <member name="M:RCSHTools.IndexedArgument.#ctor(System.String,System.String,System.Type,System.Predicate{System.String})">
+            <summary>
+            Creates a new indexed argument
+            </summary>
+            <param name="name"></param>
+            <param name="help"></param>
+            <param name="type"></param>
+            <param name="checker"></param>
+        </member>
+        <member name="T:RCSHTools.FlagArgument">
+            <summary>
+            An argument that can be toggled on and off
+            </summary>
+        </member>
+        <member name="P:RCSHTools.FlagArgument.Name">
+            <summary>
+            The name of the flag => also what triggers it
+            </summary>
+        </member>
+        <member name="P:RCSHTools.FlagArgument.Help">
+            <summary>
+            Help about the flag
+            </summary>
+        </member>
+        <member name="P:RCSHTools.FlagArgument.Checker">
+            <summary>
+            <inheritdoc cref="P:RCSHTools.IArgument.Checker"/>
+            </summary>
+        </member>
+        <member name="M:RCSHTools.FlagArgument.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new flag argument
+            </summary>
+            <param name="name"></param>
+            <param name="help"></param>
+        </member>
+        <member name="T:RCSHTools.OptionalArgument">
+            <summary>
+            An argument that is optional to the process
+            </summary>
+        </member>
+        <member name="P:RCSHTools.OptionalArgument.Type">
+            <summary>
+            The type of the argument
+            </summary>
+        </member>
+        <member name="P:RCSHTools.OptionalArgument.Name">
+            <summary>
+            The name of the argument
+            </summary>
+        </member>
+        <member name="P:RCSHTools.OptionalArgument.Help">
+            <summary>
+            Help data about the argument
+            </summary>
+        </member>
+        <member name="P:RCSHTools.OptionalArgument.Checker">
+            <summary>
+            <inheritdoc cref="P:RCSHTools.IArgument.Checker"/>
+            </summary>
+        </member>
+        <member name="M:RCSHTools.OptionalArgument.#ctor(System.String,System.String,System.Type,System.Predicate{System.String},System.String)">
+            <summary>
+            Creates a new optional argument
+            </summary>
+            <param name="name"></param>
+            <param name="dValue"></param>
+            <param name="type"></param>
+            <param name="checker"></param>
+            <param name="help"></param>
+        </member>
+        <member name="T:RCSHTools.Roman">
+            <summary>
+            Represents a roman number
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Roman.Integer">
+            <summary>
+            The decimal form of the number
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Roman.#ctor(System.UInt32)">
+            <summary>
+            Creates a <see cref="T:RCSHTools.Roman"/> from an <see cref="T:System.Int32"/>
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:RCSHTools.Roman.ToString">
+            <summary>
+            The string representation of the roman number
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Roman.Parse(System.String)">
+            <summary>
+            Parses a string into a roman numeral
+            </summary>
+            <param name="roman"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Roman.op_Implicit(System.String)~RCSHTools.Roman">
+            <summary>
+            Creates a new roman number from a string
+            </summary>
+            <param name="roman"></param>
+        </member>
+        <member name="M:RCSHTools.Roman.op_Equality(RCSHTools.Roman,RCSHTools.Roman)">
+            <summary>
+            Equality operator for 2 roman numerals
+            </summary>
+            <param name="r1"></param>
+            <param name="r2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Roman.op_Inequality(RCSHTools.Roman,RCSHTools.Roman)">
+            <summary>
+            Inequality operator for 2 roman numerals
+            </summary>
+            <param name="r1"></param>
+            <param name="r2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Roman.op_Equality(RCSHTools.Roman,System.String)">
+            <summary>
+            Equality operator for 2 roman numerals
+            </summary>
+            <param name="r1"></param>
+            <param name="r2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Roman.op_Inequality(RCSHTools.Roman,System.String)">
+            <summary>
+            Inequality operator for 2 roman numerals
+            </summary>
+            <param name="r1"></param>
+            <param name="r2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Roman.op_Equality(RCSHTools.Roman,System.Int32)">
+            <summary>
+            Equality operator for 2 roman numerals
+            </summary>
+            <param name="r1"></param>
+            <param name="r2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Roman.op_Inequality(RCSHTools.Roman,System.Int32)">
+            <summary>
+            Inequality operator for 2 roman numerals
+            </summary>
+            <param name="r1"></param>
+            <param name="r2"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.BinaryTreeReadMode">
+            <summary>
+            How to read the binary tree
+            </summary>
+        </member>
+        <member name="F:RCSHTools.BinaryTreeReadMode.Preorder">
+            <summary>
+            Reads Node->Node.left->Node.right
+            </summary>
+        </member>
+        <member name="F:RCSHTools.BinaryTreeReadMode.Inorder">
+            <summary>
+            Reads Node.left->Node->Node.right
+            </summary>
+        </member>
+        <member name="F:RCSHTools.BinaryTreeReadMode.Postorder">
+            <summary>
+            Reads Node.left->Node.right->Node
+            </summary>
+        </member>
+        <member name="T:RCSHTools.BinaryTree">
+            <summary>
+            Represents a non-generic binary search tree
+            </summary>
+        </member>
+        <member name="P:RCSHTools.BinaryTree.IsEmpty">
+            <summary>
+            Is the tree empty
+            </summary>
+        </member>
+        <member name="P:RCSHTools.BinaryTree.Count">
+            <summary>
+            The amount of items in the tree
+            </summary>
+        </member>
+        <member name="P:RCSHTools.BinaryTree.ReadMode">
+            <summary>
+            How to make the items in this tree linear
+            </summary>
+        </member>
+        <member name="F:RCSHTools.BinaryTree.CompareString">
+            <summary>
+            Default comperison method for string
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree.#ctor">
+            <summary>
+            Creates a new empty binary tree
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree.#ctor(RCSHTools.BinaryTreeReadMode)">
+            <summary>
+            Creates a new empty binary tree
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree.Add(System.IComparable)">
+            <summary>
+            Adds an item to the binary search tree
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:RCSHTools.BinaryTree.Remove(System.IComparable)">
+            <summary>
+            Removes an item from the tree
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.BinaryTree.Contains(System.IComparable)">
+            <summary>
+            Does the tree contains an item
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.BinaryTree.Clear">
+            <summary>
+            Clears the tree
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree.CopyTo(System.IComparable[],System.Int32)">
+            <summary>
+            Copies th items in this tree into an array
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+        </member>
+        <member name="T:RCSHTools.BinaryTree.BinaryTreeEnumerator">
+            <summary>
+            Enumerator for non-generic binary trees
+            </summary>
+        </member>
+        <member name="P:RCSHTools.BinaryTree.BinaryTreeEnumerator.Current">
+            <summary>
+            The currently enumerated item
+            </summary>
+        </member>
+        <member name="T:RCSHTools.BinaryTree`1">
+            <summary>
+            Generic binary search tree
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:RCSHTools.BinaryTree`1.System#Collections#Generic#ICollection{T}#Count">
+            <summary>
+            The amount of nodes in the tree
+            </summary>
+        </member>
+        <member name="P:RCSHTools.BinaryTree`1.ReadMode">
+            <summary>
+            How to linearly read the binary tree
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.#ctor(System.Comparison{`0})">
+            <summary>
+            Constructs a binary tree with a custom comperison
+            </summary>
+            <param name="compare"></param>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.#ctor(System.Comparison{`0},RCSHTools.BinaryTreeReadMode)">
+            <summary>
+            Constructs a binary tree with a custom comperison
+            </summary>
+            <param name="compare"></param>
+            <param name="mode"></param>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.Add(`0)">
+            <summary>
+             Adds an item to the seach tree
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.HasItem(`0)">
+            <summary>
+             Returns true if the value is part of the tree
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.Iteratable">
+            <summary>
+             Returns a list of all the of item in the tree 
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.Clear">
+            <summary>
+            Clears the tree.
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.Count(`0)">
+            <summary>
+             Returns the amount of times an item is appeared int the tree
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.Delete(`0)">
+            <summary>
+            Deletes an item from the tree
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.System#Collections#Generic#ICollection{T}#Remove(`0)">
+            <summary>
+            Removes an item from the list
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.IsPerfect">
+            <summary>
+             Return true if the tree is perfect
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the tree's content to an array
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+        </member>
+        <member name="T:RCSHTools.BinaryTree`1.BinaryTreeEnumrator">
+            <summary>
+            Emunerator for a binary tree
+            </summary>
+        </member>
+        <member name="P:RCSHTools.BinaryTree`1.BinaryTreeEnumrator.Current">
+            <summary>
+            The currently pointed item
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`1.BinaryTreeEnumrator.#ctor(RCSHTools.BinaryTree{`0},RCSHTools.BinaryTreeReadMode)">
+            <summary>
+            Contructors for enumrator
+            </summary>
+        </member>
+        <member name="M:RCSHTools.NodeOperation`2.Operate(RCSHTools.Node{`0,`1})">
+            <summary>
+            Runs an operation on a node, returns true if the operation was finished, false otherwise
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`2.Add(`0,`1)">
+            <summary>
+            Adds an item to the tree
+            </summary>
+            <param name="identifier"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`2.Get(`0)">
+            <summary>
+            Gets an item for the tree
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`2.Iteratable">
+            <summary>
+             Returns a list of all the items in the tree
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`2.Count(`0)">
+            <summary>
+             Returns the amount of times an item with a key appears in the tree
+            </summary>
+        </member>
+        <member name="M:RCSHTools.BinaryTree`2.IsPerfect">
+            <summary>
+             Returns true if the tree is a perfect one
+            </summary>
+        </member>
+    </members>
+</doc>

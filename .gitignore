@@ -3,3 +3,12 @@
 ################################################################################
 
 /.vs/RCSHTools
+/Features
+/RCSHTools.Network/obj
+/RCSHTools.Parsing/bin/Debug/netcoreapp3.1
+/RCSHTools.Parsing/obj
+/RCSHTools.Network/bin/Debug/netstandard2.0
+/RCSHTools.Doom/bin/Debug/netstandard2.0
+/RCSHTools.Doom/obj
+/RCSHTools.Common/bin/Debug/netstandard2.0
+/RCSHTools.Common/obj

@@ -785,6 +785,104 @@
              Linearly interpolates between 2 vectors
             </summary>
         </member>
+        <member name="T:RCSHTools.HashMap">
+            <summary>
+            Basic abstract hashmap class containing utitlty for creating a hashmap
+            </summary>
+        </member>
+        <member name="F:RCSHTools.HashMap.DEFAULT_SIZE">
+            <summary>
+            The defualt size of a hashmap
+            </summary>
+        </member>
+        <member name="F:RCSHTools.HashMap.HASH_STRING">
+            <summary>
+            Basic hash function for a string
+            </summary>
+        </member>
+        <member name="T:RCSHTools.HashMap`1">
+            <summary>
+            An hashmap
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:RCSHTools.HashMap`1.Count">
+            <summary>
+            The amount of items in the hashmap
+            </summary>
+        </member>
+        <member name="M:RCSHTools.HashMap`1.#ctor(System.Func{`0,System.Int32})">
+            <summary>
+            <inheritdoc cref="T:RCSHTools.HashMap`1"/>
+            </summary>
+            <param name="hash"></param>
+        </member>
+        <member name="M:RCSHTools.HashMap`1.#ctor(System.Int32,System.Func{`0,System.Int32})">
+            <summary>
+            Creates a new hashmap
+            </summary>
+        </member>
+        <member name="M:RCSHTools.HashMap`1.Add(`0)">
+            <summary>
+            Adds an item to the hashmap
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:RCSHTools.HashMap`1.Clear">
+            <summary>
+            Clears the hashmap
+            </summary>
+        </member>
+        <member name="M:RCSHTools.HashMap`1.Contains(`0)">
+            <summary>
+            Checks if an item is on the hashmap
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.HashMap`1.Remove(`0)">
+            <summary>
+            Removes an item from the hashmap
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.HashMap`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the content of the hashmap to an array
+            </summary>
+            <param name="arr"></param>
+            <param name="arrayIndex"></param>
+        </member>
+        <member name="T:RCSHTools.Node`1">
+            <summary>
+            A node
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:RCSHTools.Node`1.Next">
+            <summary>
+            The next node
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Node`1.Value">
+            <summary>
+            The value of this node
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Node`1.#ctor(`0)">
+            <summary>
+            Creates a new Node
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:RCSHTools.Node`1.#ctor(`0,RCSHTools.Node{`0})">
+            <summary>
+            Creates a new node
+            </summary>
+            <param name="value"></param>
+            <param name="next"></param>
+        </member>
         <member name="T:RCSHTools.Noise3D">
             <summary>
              Base class for 3d noise generation
@@ -793,6 +891,21 @@
         <member name="T:RCSHTools.RNG">
             <summary>
              An object that can generate random numbers
+            </summary>
+        </member>
+        <member name="P:RCSHTools.RNG.seed">
+            <summary>
+            The seed of the RNG
+            </summary>
+        </member>
+        <member name="P:RCSHTools.RNG.Seed">
+            <summary>
+            Returns a random seed
+            </summary>
+        </member>
+        <member name="M:RCSHTools.RNG.#ctor">
+            <summary>
+            Creates a new RNG
             </summary>
         </member>
         <member name="M:RCSHTools.RNG.#ctor(System.Int32)">
@@ -1380,6 +1493,62 @@
             <summary>
              Returns true if the tree is a perfect one
             </summary>
+        </member>
+        <member name="T:RCSHTools.PathTree`1">
+            <summary>
+            Node for a path tree
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:RCSHTools.PathTree`1.#ctor">
+            <summary>
+            Builds an empty path treee
+            </summary>
+        </member>
+        <member name="M:RCSHTools.PathTree`1.#ctor(System.String,`0)">
+            <summary>
+            Builds a path tree with a specific origin name
+            </summary>
+            <param name="origin"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:RCSHTools.PathTree`1.Add(System.String,`0)">
+            <summary>
+            Adds an item to a path
+            </summary>
+            <param name="path"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:RCSHTools.PathTree`1.Get(System.String)">
+            <summary>
+            Gets the item at a specific path
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.PathTree`1.Set(System.String,`0)">
+            <summary>
+            Sets an item a path
+            </summary>
+            <param name="path"></param>
+            <param name="value"></param>
+        </member>
+        <member name="T:RCSHTools.SolveTree">
+            <summary>
+            A tree used to solve algbric equations (basic operations like +-/*())
+            </summary>
+        </member>
+        <member name="M:RCSHTools.SolveTree.#ctor(System.String)">
+            <summary>
+            Creates a new solve tree
+            </summary>
+            <param name="eq"></param>
+        </member>
+        <member name="M:RCSHTools.SolveTree.Solve">
+            <summary>
+            Solves the 
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>

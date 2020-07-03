@@ -1,5 +1,8 @@
 namespace RCSHTools
 {
+    /// <summary>
+    /// A tree used to solve algbric equations (basic operations like +-/*())
+    /// </summary>
     public class SolveTree {
 
         private static int GetPercende(char o){
@@ -16,11 +19,19 @@ namespace RCSHTools
 
         private ISolveTreeNode root;
 
+        /// <summary>
+        /// Creates a new solve tree
+        /// </summary>
+        /// <param name="eq"></param>
         public SolveTree(string eq){
             eq = eq.Replace(" ","");
             root = GenerateNode(eq, null);
         }
 
+        /// <summary>
+        /// Solves the 
+        /// </summary>
+        /// <returns></returns>
         public double Solve(){
             try {
                 return root.DoAction();

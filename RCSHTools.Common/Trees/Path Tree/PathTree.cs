@@ -30,20 +30,37 @@ namespace RCSHTools {
         }
     }
 
+    /// <summary>
+    /// Node for a path tree
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class PathTree<T> {
         PathNode<T> origin;
         bool rootOrigin;
 
+        /// <summary>
+        /// Builds an empty path treee
+        /// </summary>
         public PathTree(){
             origin = new PathNode<T>("__root__", default(T));
             rootOrigin = true;
         }
 
+        /// <summary>
+        /// Builds a path tree with a specific origin name
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <param name="value"></param>
         public PathTree(string origin, T value){
             this.origin = new PathNode<T>(origin, value);
             rootOrigin = false;
         }
-    
+        
+        /// <summary>
+        /// Adds an item to a path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="value"></param>
         public void Add(string path, T value){
             if(rootOrigin){
                 AddNode("__root__/" + path, value);
@@ -70,7 +87,12 @@ namespace RCSHTools {
 
             n.Value = value;
         }
-    
+        
+        /// <summary>
+        /// Gets the item at a specific path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public T Get(string path){
             if(rootOrigin){
                 path = "__root__/" + path;
@@ -78,6 +100,11 @@ namespace RCSHTools {
             return GetNode(path).Value;
         }
 
+        /// <summary>
+        /// Sets an item a path
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="value"></param>
         public void Set(string path, T value){
             if(rootOrigin){
                 path = "__root__/" + path;

@@ -15,8 +15,14 @@ namespace RCSHTools {
         private string binaryString;
         private int pointer;
 
+        /// <summary>
+        /// The seed of the RNG
+        /// </summary>
         public int seed {get;}
 
+        /// <summary>
+        /// Returns a random seed
+        /// </summary>
         public static int Seed {
             get {
                 var dt = DateTime.Now;
@@ -35,6 +41,9 @@ namespace RCSHTools {
         #endregion
 
 
+        /// <summary>
+        /// Creates a new RNG
+        /// </summary>
         public RNG() : this(Seed) {}
         /// <summary>
         /// Creates a new RNG object with a given seed

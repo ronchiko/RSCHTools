@@ -9,6 +9,10 @@
     <OutputPath>C:\Users\ronmh\Documents\Other Projects\C#\bin\v0.2\.Doom\</OutputPath>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>RCSHTools.Doom.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
   </ItemGroup>

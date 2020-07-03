@@ -4,10 +4,17 @@ using System.Text;
 
 namespace RCSHTools.Parsing
 {
+    /// <summary>
+    /// An automata that check if a chain of automatas succeed in a row
+    /// </summary>
     public class ChainAutomata : Automata , IMultiAutomata<StringParser>
     {
         public IAutomataState<StringParser>[] States { get; }
 
+        /// <summary>
+        /// Creates a new chain automata
+        /// </summary>
+        /// <param name="automatas"></param>
         public ChainAutomata(params IAutomata<char>[] automatas)
         {
             States = new IAutomataState<StringParser>[automatas.Length];
@@ -18,6 +25,12 @@ namespace RCSHTools.Parsing
             }
         }
 
+        /// <summary>
+        /// <inheritdoc cref="IMultiAutomata{T}.Pass(StringParser, out int)"/>
+        /// </summary>
+        /// <param name="sp"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
         public bool Pass(StringParser sp, out int state)
         {
             state = 0;
@@ -25,74 +38,98 @@ namespace RCSHTools.Parsing
             while ((i = States[i].Read(sp)) >= 0) state = i;
             return i == FINISHED;
         }
+        /// <summary>
+        /// <inheritdoc cref="IAutomata{T}.Pass(StringParser)"/>
+        /// </summary>
+        /// <param name="sp"></param>
+        /// <returns></returns>
         public bool Pass(StringParser sp)
         {
             int temp; return Pass(sp, out temp);
         }
     }
 
-    public struct WhiteSpaceAutomata : IAutomata<char>
+    /// <summary>
+    /// An automata for reading all whitespaces
+    /// </summary>
+    public class WhiteSpaceAutomata : IAutomata<char>
     {
-        public IAutomataState<char>[] States { get; }
+        IAutomataState<char>[] IAutomata<char>.States { get; } = null;
 
-        private char breaker;
+        /// <summary>
+        /// <inheritdoc cref="WhiteSpaceAutomata"/>
+        /// </summary>
+        public WhiteSpaceAutomata()  { }
 
-        public WhiteSpaceAutomata(char breaker)
-        {
-            States = null;
-            this.breaker = breaker;
-        }
-
+        /// <summary>
+        /// <inheritdoc cref="IAutomata{T}.Pass(StringParser)"/>
+        /// </summary>
+        /// <param name="sp"></param>
+        /// <returns></returns>
         public bool Pass(StringParser sp)
         {
-            char c; int count = 0;
-            while (sp.CanRead)
-            {
-                sp.Record();
-                c = sp.Read(); count++;
-                if (c == 0 || char.IsWhiteSpace(c)) continue;
-                else
-                {
-                    sp.Revert(); sp.ClearMemory(--count);
-                    return c == breaker;
-                }
-            }
+            char c;
+            while (((c = sp.Peek()) == 0 || char.IsWhiteSpace(c))) sp.Read();
             return false;
         }
     }
 
+    /// <summary>
+    /// An automata state that contains an automata
+    /// </summary>
     public struct AutomataWrapperState : IAutomataState<StringParser>
     {
         private int next;
         private IAutomata<char> automata;
 
+        /// <summary>
+        /// Create an automata state wrapper
+        /// </summary>
+        /// <param name="automata"></param>
+        /// <param name="next"></param>
         public AutomataWrapperState(IAutomata<char> automata, int next)
         {
             this.automata = automata;
             this.next = next;
         }
 
+        /// <summary>
+        /// <inheritdoc cref="IAutomataState{T}.Read(T)"/>
+        /// </summary>
+        /// <param name="sp"></param>
+        /// <returns></returns>
         public int Read(StringParser sp)
         {
             return automata.Pass(sp) ? next : Automata.FAILED;
         }
     }
 
-    public struct WordAutomata : IAutomata<char>
+    /// <summary>
+    /// Reads until reaches the breaker or a whitespace
+    /// </summary>
+    public class WordAutomata : IAutomata<char>
     {
         private char escape;
-        public IAutomataState<char>[] States { get; }
+        IAutomataState<char>[] IAutomata<char>.States { get; } = null;
 
+        /// <summary>
+        /// Builds a new word automata
+        /// </summary>
+        /// <param name="escape"></param>
         public WordAutomata(char escape)
         {
             this.escape = escape;
-            States = null;
         }
 
+        /// <summary>
+        /// <inheritdoc cref="IAutomata{T}.Pass(StringParser)"/>
+        /// </summary>
+        /// <param name="sp"></param>
+        /// <returns></returns>
         public bool Pass(StringParser sp)
         {
             char c;
-            while ((c = sp.Read()) != 0 && !char.IsWhiteSpace(c) && c != escape) ;
+            while ((c = sp.Peek()) != 0 && !char.IsWhiteSpace(c) && c != escape) sp.Read();
             return true;
         }
     }

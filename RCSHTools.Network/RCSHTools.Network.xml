@@ -1,0 +1,621 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RCSHTools.Network</name>
+    </assembly>
+    <members>
+        <member name="T:RCSHTools.Network.ByteBuffer">
+            <summary>
+            Represent an array of bytes that can be translated to 
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.ByteBuffer.Item(System.Int32)">
+            <summary>
+            Gets and sets a value in the union
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.ByteBuffer.#ctor">
+            <summary>
+            Creates a new empty resizeable byte buffer
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.ByteBuffer.#ctor(System.Byte[])">
+            <summary>
+            Creates a buffer from another buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="M:RCSHTools.Network.ByteBuffer.Add(System.Byte)">
+            <summary>
+            Adds a new item to the buffer
+            </summary>
+            <param name="b"></param>
+        </member>
+        <member name="M:RCSHTools.Network.ByteBuffer.Add(System.Char)">
+            <summary>
+            Adds a new item to the buffer
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="M:RCSHTools.Network.ByteBuffer.RemoveAt(System.Int32)">
+            <summary>
+            Removes an item by its index
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="T:RCSHTools.Network.ConstantPacketCollection">
+            <summary>
+            Reprsents a collection of packets
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.IPacketCollection">
+            <summary>
+            Represents a collection of packets
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPacketCollection.Count">
+            <summary>
+            The amount of packets in the collection
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPacketCollection.Item(System.Int32)">
+            <summary>
+            Gets a packet from the collection by its index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.IPacketCollection.Add(RCSHTools.Network.Packet)">
+            <summary>
+            Adds a packet for the collection
+            </summary>
+            <param name="packet"></param>
+        </member>
+        <member name="M:RCSHTools.Network.IPacketCollection.Find(System.Predicate{RCSHTools.Network.Packet})">
+            <summary>
+            Finds a packet in the collection
+            </summary>
+            <param name="predicate"></param>
+        </member>
+        <member name="T:RCSHTools.Network.IPacketLayer">
+            <summary>
+            Represents a packet layer
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPacketLayer.IsVirtual">
+            <summary>
+            Are the properties of this layer are accessible for the user. 
+            Some lower level packets cannot be accesed without a Raw Socket support in machines
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.IPLayer">
+            <summary>
+            Represents an IP layer
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPLayer.Version">
+            <summary>
+            IP protocol version
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPLayer.HeaderLength">
+            <summary>
+            Length of the header
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPLayer.Service">
+            <summary>
+            Service type
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPLayer.Length">
+            <summary>
+            The total length of the packet
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPLayer.ID">
+            <summary>
+            Packet id
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPLayer.TTL">
+            <summary>
+            Time to live
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPLayer.Protocol">
+            <summary>
+            The protocol that is used
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.IPLayer.Checksum">
+            <summary>
+            The packets IP header checksum
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.Net">
+            <summary>
+            Has common network utilities
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.NetBuffer">
+            <summary>
+            Utility class for handling socket buffers
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.NetBuffer.CanWrite">
+            <summary>
+            Does the <see cref="T:RCSHTools.Network.NetBuffer"/> has space left to write. To clear the buffer use <see cref="M:RCSHTools.Network.NetBuffer.Reset"/>
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.#ctor(System.Int32)">
+            <summary>
+            Creates a new net buffer
+            </summary>
+            <param name="size"></param>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.GetInt(System.Int32)">
+            <summary>
+            Gets an <see cref="T:System.Int32"/> from the array
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.GetUInt(System.Int32)">
+            <summary>
+            Gets an <see cref="T:System.UInt32"/> from the array
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.GetULong(System.Int32)">
+            <summary>
+            Gets a <see cref="T:System.UInt64"/> from the buffer
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Write(System.Byte[])">
+            <summary>
+            Writes a <see cref="T:System.Byte"/>[] to the buffer
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Write(System.Int32)">
+            <summary>
+            Writes data to the buffer
+            </summary>
+            <param name="num"></param>
+            <param name="data"></param>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Write(System.UInt64)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Network.NetBuffer.Write(System.Int32)"/>
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Write(System.UInt32)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Network.NetBuffer.Write(System.Int32)"/>
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Write(System.Int64)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Network.NetBuffer.Write(System.Int32)"/>
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Write(System.Int16)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Network.NetBuffer.Write(System.Int32)"/>
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Write(System.Char)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Network.NetBuffer.Write(System.Int32)"/>
+            </summary>
+            <param name="character"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Write(System.UInt16)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Network.NetBuffer.Write(System.Int32)"/>
+            </summary>
+            <param name="num"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Write(System.String)">
+            <summary>
+            Writes a string to the buffer
+            </summary>
+            <param name="str"></param>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Write(System.String,System.Text.Encoding)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Network.NetBuffer.Write(System.String)"/>
+            </summary>
+            <param name="str"></param>
+            <param name="encoding"></param>
+        </member>
+        <member name="M:RCSHTools.Network.NetBuffer.Reset">
+            <summary>
+            Resets the write index
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.NetExt">
+            <summary>
+            Extension for Network tools
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.NetExt.Receive(System.Net.Sockets.Socket,RCSHTools.Network.NetBuffer)">
+            <summary>
+            Receives a value from a <see cref="T:System.Net.Sockets.Socket"/> into a <see cref="T:RCSHTools.Network.NetBuffer"/>
+            </summary>
+            <param name="socket"></param>
+            <param name="buffer"></param>
+        </member>
+        <member name="M:RCSHTools.Network.NetExt.ReceiveFrom(System.Net.Sockets.Socket,RCSHTools.Network.NetBuffer,System.Net.EndPoint@)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Network.NetExt.Receive(System.Net.Sockets.Socket,RCSHTools.Network.NetBuffer)"/>
+            </summary>
+            <param name="socket"></param>
+            <param name="remote"></param>
+            <param name="buffer"></param>
+        </member>
+        <member name="M:RCSHTools.Network.NetExt.Send(System.Net.Sockets.Socket,RCSHTools.Network.NetBuffer)">
+            <summary>
+            Sends data to a <see cref="T:System.Net.Sockets.Socket"/> from a <see cref="T:RCSHTools.Network.NetBuffer"/>
+            </summary>
+            <param name="socket"></param>
+            <param name="buffer"></param>
+        </member>
+        <member name="M:RCSHTools.Network.NetExt.SendTo(System.Net.Sockets.Socket,RCSHTools.Network.NetBuffer,System.Net.EndPoint)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Network.NetExt.Send(System.Net.Sockets.Socket,RCSHTools.Network.NetBuffer)"/>
+            </summary>
+            <param name="socket"></param>
+            <param name="remote"></param>
+            <param name="buffer"></param>
+        </member>
+        <member name="T:RCSHTools.Network.Packet">
+            <summary>
+            Represents a network packet
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RISPClient">
+            <summary>
+            A RISP protocol client
+            </summary>
+        </member>
+        <member name="E:RCSHTools.Network.RISP.RISPClient.OnRequestImage">
+            <summary>
+            Called when a request for source image is recieved
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPClient.#ctor">
+            <summary>
+            Creates a new RISP client
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPClient.Pair(System.String,System.Int32)">
+            <summary>
+            Pairs between a client and a server
+            </summary>
+            <param name="ip"></param>
+            <param name="port"></param>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPClient.TryPair(System.String,System.Int32)">
+            <summary>
+            Attempt to pair this client to a <see cref="T:RCSHTools.Network.RISP.RISPServer"/>
+            </summary>
+            <param name="ip"></param>
+            <param name="port"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPClient.SetPixel(System.Int32,System.Int32,RCSHTools.RGB)">
+            <summary>
+            Updates a color in the image localy
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPClient.SetPixel(System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Network.RISP.RISPClient.SetPixel(System.Int32,System.Int32,RCSHTools.RGB)"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="rgb"></param>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPClient.Stream">
+            <summary>
+            Sends all the recorded data to a paired server
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPClient.Unpair">
+            <summary>
+            Disconnects from a server
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RISPErrors">
+            <summary>
+            An enum that represents all the error that can occur on a RISP clients and servers
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPErrors.Successful">
+            <summary>
+            No errors occured
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPErrors.InvalidImageData">
+            <summary>
+            The image data supplied for the pairing is invalid
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPErrors.ResolutionTooLarge">
+            <summary>
+            When trying to pair an image that is too large
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPErrors.SocketError">
+            <summary>
+            A socket error accured
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPErrors.PairDeclined">
+            <summary>
+            The pairing was declined by the server
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPErrors.DimensionMismatch">
+            <summary>
+            When the server recieves diffrent resultions from a client
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPErrors.Unknown">
+            <summary>
+            An unknown error occured
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RISPServer">
+            <summary>
+            Repsentes a Risp Server that receiver an image
+            </summary>
+        </member>
+        <member name="E:RCSHTools.Network.RISP.RISPServer.OnConnectionAstablished">
+            <summary>
+            Called when a new connection is astablished
+            </summary>
+        </member>
+        <member name="E:RCSHTools.Network.RISP.RISPServer.OnStreamUpdate">
+            <summary>
+            Called when the stream is updated
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPServer.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates a new RITP server
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPServer.Run">
+            <summary>
+            Starts the server as a thread
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPServer.Start(System.Object)">
+            <summary>
+            Runs the server
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RISPImagePixel">
+            RISP - Ron's Image Streaming Protocol
+            <summary>
+            Repsents a pixel in an image
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPImagePixel.x">
+            <summary>
+            The x coordinate of the pixel
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPImagePixel.y">
+            <summary>
+            The y coordinate of the pixel
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPImagePixel.color">
+            <summary>
+            The color of the pixel
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPImagePixel.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RISPImageStructure">
+            <summary>
+            Represnets the nessery information for a <see cref="T:RCSHTools.Network.RISP.RISPServer"/> to allow pairing with a <see cref="T:RCSHTools.Network.RISP.RISPClient"/>. 
+            The <see cref="T:RCSHTools.Network.RISP.RISPImageStructure"/> is valid if: 
+            <list type="bullet">
+            The data.Length == width * height</list>
+            <list type="bullet">Width > 0</list>
+            <list type="bullet">Height > 0</list>
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPImageStructure.width">
+            <summary>
+            The width of the image
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPImageStructure.height">
+            <summary>
+            The height of the image
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Network.RISP.RISPImageStructure.data">
+            <summary>
+            The color data of the image
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RISPImageStructure.#ctor(System.Int32,System.Int32,System.Int32[])">
+            <summary>
+            Creates a new <see cref="T:RCSHTools.Network.RISP.RISPImageStructure"/>
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="data"></param>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.OnRISPImageUpdate">
+            <summary>
+            Delegate for when the image update on the server
+            </summary>
+            <param name="changes"></param>
+            <param name="sender"></param>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.OnRISPImageInit">
+            <summary>
+            Delegate for when a <see cref="T:RCSHTools.Network.RISP.RISPServer"/> initalizes an image
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="image"></param>
+            <param name="sender"></param>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.OnRISPImageRequest">
+            <summary>
+            Delegate for when the client is requested to send the source image
+            </summary>
+            <param name="sender"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RispInvalidImageException">
+            <summary>
+            Occurs when a <see cref="T:RCSHTools.Network.RISP.RISPImageStructure"/> is invalid
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RispInvalidImageException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RispDimensionsTooLargeException">
+            <summary>
+            Occurs when a risp image dimensions are too large
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RispDimensionsTooLargeException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RispDimensionMismatchException">
+            <summary>
+            Occurs when a <see cref="T:RCSHTools.Network.RISP.RISPServer"/> recieves two diffrent dimensions from a client
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RispDimensionMismatchException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RispPairDeclinedException">
+            <summary>
+            Occurs when a <see cref="T:RCSHTools.Network.RISP.RISPServer"/> declines a pairing from a <see cref="T:RCSHTools.Network.RISP.RISPClient"/>
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RispPairDeclinedException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RispUnpairedClientException">
+            <summary>
+            Occurs when a client trys to send data to a server while the client is not paired to any server
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RispUnpairedClientException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.RispTerminateThreadException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.RispTerminateThreadException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Network.RISP.StreamImage">
+            <summary>
+            Represents a image that is sent over the network
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.RISP.StreamImage.Width">
+            <summary>
+            The width of the image
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Network.RISP.StreamImage.Height">
+            <summary>
+            The height of the image
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.StreamImage.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates a new receiver for the image
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.StreamImage.GetPixel(System.Int32,System.Int32)">
+            <summary>
+            Returns the color of a pixel in the image using its coordinates
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.StreamImage.SetPixel(System.Int32,System.Int32,RCSHTools.RGB)">
+            <summary>
+            Sets a pixels color via its coordinates
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+        </member>
+        <member name="M:RCSHTools.Network.RISP.StreamImage.SetPixel(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets a pixels color via its coordinates
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="color"></param>
+        </member>
+        <member name="T:RCSHTools.Network.Sniffer">
+            <summary>
+            A base class for all types of sniffers
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Network.Sniffer.#ctor">
+            <summary>
+            Creates a new sniffer
+            </summary>
+        </member>
+    </members>
+</doc>

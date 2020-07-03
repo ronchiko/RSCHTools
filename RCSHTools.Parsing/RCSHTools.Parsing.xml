@@ -1,0 +1,437 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RCSHTools.Parsing</name>
+    </assembly>
+    <members>
+        <member name="T:RCSHTools.Parsing.Automata">
+            <summary>
+            A base class the contains utilites for building automatas
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Parsing.Automata.FINISHED">
+            <summary>
+            Index when the automata is finished successfully
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Parsing.Automata.FAILED">
+            <summary>
+            Index when the automata have faild
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.Automata.CreateSingleStateAutomata(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Creates a linear sub automata for a string
+            </summary>
+            <param name="c"></param>
+            <param name="noWhitespace"></param>
+            <param name="indexShift">Index to shift</param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.Automata.TestSubAutomata(System.Collections.Generic.IEnumerable{RCSHTools.Parsing.IAutomataState{System.Char}},System.String,System.Int32@,System.Int32@)">
+            <summary>
+            Tests a subautomata and outputs if it failed or succeeded and the final character index in the string and the final state index brefore the failure
+            </summary>
+            <param name="auto"></param>
+            <param name="str"></param>
+            <param name="stateIndex"></param>
+            <param name="charIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.MultiAutomataState`1">
+            <summary>
+            State that accepts many inputs and outputs
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:RCSHTools.Parsing.MultiAutomataState`1.#ctor(`0,System.Int32)">
+            <summary>
+            <inheritdoc cref="T:RCSHTools.Parsing.MultiAutomataState`1"/>
+            </summary>
+            <param name="c"></param>
+            <param name="t"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.MultiAutomataState`1.AddPassage(`0,System.Int32)">
+            <summary>
+            Adds a new passage to the passage table
+            </summary>
+            <param name="c"></param>
+            <param name="t"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.MultiAutomataState`1.Read(`0)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IAutomataState`1.Read(`0)"/>
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.ChainAutomata">
+            <summary>
+            An automata that check if a chain of automatas succeed in a row
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.ChainAutomata.#ctor(RCSHTools.Parsing.IAutomata{System.Char}[])">
+            <summary>
+            Creates a new chain automata
+            </summary>
+            <param name="automatas"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.ChainAutomata.Pass(RCSHTools.Parsing.StringParser,System.Int32@)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IMultiAutomata`1.Pass(RCSHTools.Parsing.StringParser,System.Int32@)"/>
+            </summary>
+            <param name="sp"></param>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.ChainAutomata.Pass(RCSHTools.Parsing.StringParser)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IAutomata`1.Pass(RCSHTools.Parsing.StringParser)"/>
+            </summary>
+            <param name="sp"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.WhiteSpaceAutomata">
+            <summary>
+            An automata for reading all whitespaces
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.WhiteSpaceAutomata.#ctor">
+            <summary>
+            <inheritdoc cref="T:RCSHTools.Parsing.WhiteSpaceAutomata"/>
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.WhiteSpaceAutomata.Pass(RCSHTools.Parsing.StringParser)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IAutomata`1.Pass(RCSHTools.Parsing.StringParser)"/>
+            </summary>
+            <param name="sp"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.AutomataWrapperState">
+            <summary>
+            An automata state that contains an automata
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.AutomataWrapperState.#ctor(RCSHTools.Parsing.IAutomata{System.Char},System.Int32)">
+            <summary>
+            Create an automata state wrapper
+            </summary>
+            <param name="automata"></param>
+            <param name="next"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.AutomataWrapperState.Read(RCSHTools.Parsing.StringParser)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IAutomataState`1.Read(`0)"/>
+            </summary>
+            <param name="sp"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.WordAutomata">
+            <summary>
+            Reads until reaches the breaker or a whitespace
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.WordAutomata.#ctor(System.Char)">
+            <summary>
+            Builds a new word automata
+            </summary>
+            <param name="escape"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.WordAutomata.Pass(RCSHTools.Parsing.StringParser)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IAutomata`1.Pass(RCSHTools.Parsing.StringParser)"/>
+            </summary>
+            <param name="sp"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.IAutomata`1">
+            <summary>
+            An automata in which the final state index doesn't matter
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Parsing.IAutomata`1.States">
+            <summary>
+            The states of the automata
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.IAutomata`1.Pass(RCSHTools.Parsing.StringParser)">
+            <summary>
+            Passes a value to the automata return true if it passed it
+            </summary>
+            <param name="sp"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.IMultiAutomata`1">
+            <summary>
+            An automata in which the final state index matters
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.IMultiAutomata`1.Pass(RCSHTools.Parsing.StringParser,System.Int32@)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IAutomata`1.Pass(RCSHTools.Parsing.StringParser)"/>, and outputs the final state
+            </summary>
+            <param name="sp"></param>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.IAutomataState`1">
+            <summary>
+            An automata state
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:RCSHTools.Parsing.IAutomataState`1.Read(`0)">
+            <summary>
+            Returns the index of the next state according to the given input
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.LinearStringAutomata">
+            <summary>
+            Can read a string from a string stream or as string parser, and tell if it matches a word
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Parsing.LinearStringAutomata.States">
+            <summary>
+            <inheritdoc cref="P:RCSHTools.Parsing.IAutomata`1.States"/>
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.LinearStringAutomata.#ctor(System.String,System.Boolean)">
+            <summary>
+            <inheritdoc cref="T:RCSHTools.Parsing.LinearStringAutomata"/>
+            </summary>
+            <param name="accept"></param>
+            <param name="noWhitespace"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.LinearStringAutomata.Pass(RCSHTools.Parsing.StringParser)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IAutomata`1.Pass(RCSHTools.Parsing.StringParser)"/>
+            </summary>
+            <param name="sp"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.LinearAutomataState`1">
+            <summary>
+            A state which only accepts a single type of char
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:RCSHTools.Parsing.LinearAutomataState`1.#ctor(`0,System.Int32)">
+            <summary>
+            <inheritdoc cref="T:RCSHTools.Parsing.LinearAutomataState`1"/>
+            </summary>
+            <param name="v"></param>
+            <param name="next"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.LinearAutomataState`1.Read(`0)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IAutomataState`1.Read(`0)"/>
+            </summary>
+            <param name="read"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.WhiteSpaceAutomataState">
+            <summary>
+            Accepts all whitespaces
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.WhiteSpaceAutomataState.#ctor(System.Int32)">
+            <summary>
+            <inheritdoc cref="T:RCSHTools.Parsing.WhiteSpaceAutomataState"/>
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.WhiteSpaceAutomataState.Read(System.Char)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IAutomataState`1.Read(`0)"/>
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Parsing.MultiStringAutomata">
+            <summary>
+            An automata that can accept many strings
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Parsing.MultiStringAutomata.States">
+            <summary>
+            <inheritdoc cref="P:RCSHTools.Parsing.IAutomata`1.States"/>
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.MultiStringAutomata.#ctor(System.String[])">
+            <summary>
+            <inheritdoc cref="T:RCSHTools.Parsing.MultiStringAutomata"/>
+            </summary>
+            <param name="values"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.MultiStringAutomata.#ctor(System.Boolean,System.String[])">
+            <summary>
+            <inheritdoc cref="T:RCSHTools.Parsing.MultiStringAutomata"/>
+            </summary>
+            <param name="noWhitespace"></param>
+            <param name="values"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.MultiStringAutomata.Pass(RCSHTools.Parsing.StringParser,System.String@)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IMultiAutomata`1.Pass(RCSHTools.Parsing.StringParser,System.Int32@)"/>
+            </summary>
+            <param name="sp"></param>
+            <param name="receivedWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.MultiStringAutomata.Pass(RCSHTools.Parsing.StringParser,System.Int32@)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IMultiAutomata`1.Pass(RCSHTools.Parsing.StringParser,System.Int32@)"/>
+            </summary>
+            <param name="sp"></param>
+            <param name="state"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.MultiStringAutomata.Pass(RCSHTools.Parsing.StringParser)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.IAutomata`1.Pass(RCSHTools.Parsing.StringParser)"/>
+            </summary>
+            <param name="sp"></param>
+            <returns></returns>
+        </member>
+        <member name="P:RCSHTools.Parsing.StringParser.CanRead">
+            <summary>
+            Can the parser read anymore?
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.#ctor(System.String)">
+            <summary>
+            Creates a new string parser
+            </summary>
+            <param name="str"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.Read">
+            <summary>
+            Reads the characters
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.Peek">
+            <summary>
+            Show the next charater that is about to be read
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.ReadNext">
+            <summary>
+            Reads the next word on the string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.ReadPair(System.Tuple{System.Char,System.Char})">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.StringParser.ReadPair(System.Char,System.Char)"/>
+            </summary>
+            <param name="pair"></param>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.ReadPair(System.Char,System.Char)">
+            <summary>
+            Reads all data between two character
+            </summary>
+            <param name="opener"></param>
+            <param name="closer"></param>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.ReadPairUnleveled(System.Char)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.StringParser.ReadPair(System.Char,System.Char)"/> (which are equal)
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.ReadUntil(System.Char)">
+            <summary>
+            Reads every thing until it encouters a specific character
+            </summary>
+            <param name="closer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.ReadUntil(System.Predicate{System.Char})">
+            <summary>
+            Reads until a condition is reached
+            </summary>
+            <param name="predicate">Should return true when needs to stop reading</param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.TryReadPair(System.Tuple{System.Char,System.Char},System.String@)">
+            <summary>
+            Try to read a pair, if it fails all reading is undone
+            </summary>
+            <param name="pair"></param>
+            <param name="output"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.TryReadPair(System.Char,System.Char,System.String@)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Parsing.StringParser.TryReadPair(System.Tuple{System.Char,System.Char},System.String@)"/>
+            </summary>
+            <param name="opener"></param>
+            <param name="closer"></param>
+            <param name="output"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.TryReadUntil(System.Char,System.String@)">
+            <summary>
+            Trys to read every thing 
+            </summary>
+            <param name="closer"></param>
+            <param name="output"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.ClearMemory">
+            <summary>
+            Clears the parsers memory
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.Revert">
+            <summary>
+            Reverts the parser cursor one read back
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.Revert(System.Int32)">
+            <summary>
+            Reverts the parser's cursor a couple of stages back
+            </summary>
+            <param name="stages"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.Record">
+            <summary>
+            Records the current index into memory
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.MoveTo(System.Int32)">
+            <summary>
+            Moves the parser's pointer to a given index
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.ClearMemory(System.Int32)">
+            <summary>
+            Clears the memory an fixed amount backwards
+            </summary>
+            <param name="backwards"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.RevertTo(System.Int32)">
+            <summary>
+            Reverts the memory to a previus state (usssualy taken with a call to Record())
+            </summary>
+            <param name="record"></param>
+        </member>
+        <member name="M:RCSHTools.Parsing.StringParser.ToString">
+            <summary>
+            Returns a string representation of the string parser
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

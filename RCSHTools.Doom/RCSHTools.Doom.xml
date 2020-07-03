@@ -1,0 +1,1193 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RCSHTools.Doom</name>
+    </assembly>
+    <members>
+        <member name="T:RCSHTools.Doom.DoomGraphic">
+            <summary>
+            Represents a doom format graphic
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.DoomGraphic.Width">
+            <summary>
+            Widths of the image
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.DoomGraphic.Height">
+            <summary>
+            Height of the image
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.DoomGraphic.OffsetX">
+            <summary>
+            The x offset of the graphic
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.DoomGraphic.OffsetY">
+            <summary>
+            The Y offset of the graphic
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.DoomGraphic.#ctor(RCSHTools.Doom.Lump,RCSHTools.Doom.DoomPallete)">
+            <summary>
+            Creates a new doom graphic
+            </summary>
+            <param name="lump"></param>
+            <param name="pallete"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.DoomGraphic.ToImage">
+            <summary>
+            Returns an image copy of the graphic
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.DoomGraphic.ToRgba2dArray">
+            <summary>
+            Turns the image into a Rgba colormap
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Doom.DoomPallete">
+            <summary>
+            Represnts a single doom pallete
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.DoomPallete.Item(System.Int32)">
+            <summary>
+            Returns the colour with thee correct index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.DoomPallete.#ctor(System.IO.MemoryStream)">
+            <summary>
+            Createss a new doom color pallete
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="T:RCSHTools.Doom.DoomPalleteCollection">
+            <summary>
+            A collection of Palletes (PLAYPAL)
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.DoomPalleteCollection.Item(System.Int32)">
+            <summary>
+            Returns a pallete by its index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.DoomPalleteCollection.#ctor(System.IO.MemoryStream)">
+            <summary>
+            Creates a new pallete collection
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="T:RCSHTools.Doom.DoomUtils">
+            <summary>
+            Utilities for doom projects
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.DoomUtils.ToName(System.Byte[])">
+            <summary>
+            Turns an array to a lump qualified name
+            </summary>
+            <param name="array"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.DoomUtils.ToName(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Doom.DoomUtils.ToName(System.Byte[])"/>
+            </summary>
+            <param name="array"></param>
+            <param name="index"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.DoomUtils.GetNameAsBytes(System.String)">
+            <summary>
+            Gets a name as a <see cref="T:System.Byte"/>[]
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Doom.Graphic">
+            <summary>
+            Used to handle all types of graphics
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Graphic.Type">
+            <summary>
+            What kind of image it is
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.Graphic.#ctor(RCSHTools.Doom.WadFile,System.String)">
+            <summary>
+            Loads a new graphics from a wad
+            </summary>
+            <param name="lumpName"></param>
+            <param name="file"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.Graphic.LoadImage">
+            <summary>
+            Loads the graphic as a bitmap. <b>Requires System.Drawing.Common</b>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.Graphic.Raw">
+            <summary>
+            The lumps raw data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.Graphic.DoomGraphic">
+            <summary>
+            The prepared doom graphic, returns null if the graphic type is not <see cref="F:RCSHTools.Doom.GraphicType.DoomPatch"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Doom.GraphicType">
+            <summary>
+            What kind of graphic is it
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.GraphicType.Png">
+            <summary>
+            The file is compressed in PNG format
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.GraphicType.Jpeg">
+            <summary>
+            The file is compressed in JPEG format
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.GraphicType.DoomPatch">
+            <summary>
+            The file is a doom compressed file
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.Interpeters.IAutoParseLump">
+            <summary>
+            Allows auto parsing of lumps when the are modified by another interpeter
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.Interpeters.IAutoParseLump.Parse">
+            <summary>
+            Called when the lump is created, and when the lumps data is modified externally
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.Interpeters.IAutoParseLump.ToRaw">
+            <summary>
+            Turns the parsed data into a byte array that can be written to a lump
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Doom.Interpeters.MapInterpter">
+            <summary>
+            A one directional 
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Interpeters.MapInterpter.Name">
+            <summary>
+            The name of the map
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.Interpeters.MapInterpter.#ctor(RCSHTools.Doom.Lump,RCSHTools.Doom.Maps.SpecificationMode)">
+            <summary>
+            
+            </summary>
+            <param name="lump"></param>
+            <param name="spec"></param>
+        </member>
+        <member name="P:RCSHTools.Doom.Interpeters.MapLineInterpeter.Lines">
+            <summary>
+            The line defenitions
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Interpeters.MapLineInterpeter.Sides">
+            <summary>
+            The side defenitions
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.Interpeters.MapLineInterpeter.#ctor(RCSHTools.Doom.Lump,RCSHTools.Doom.Lump,RCSHTools.Doom.Maps.SpecificationMode)">
+            <summary>
+            Creates a new map line interpeter
+            </summary>
+            <param name="lines"></param>
+            <param name="sides"></param>
+            <param name="mode"></param>
+        </member>
+        <member name="T:RCSHTools.Doom.LumpReader">
+            <summary>
+            Warps a lump and allows interaction with it
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.LumpReader.Raw">
+            <summary>
+            The raw data of the lump
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.LumpReader.Lump">
+            <summary>
+            The interpeted lump
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.LumpReader.#ctor(RCSHTools.Doom.Lump)">
+            <summary>
+            Creates a new lump interpeter
+            </summary>
+            <param name="lump"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.LumpReader.Reload(System.Byte[]@,RCSHTools.Doom.LumpReader)">
+            <summary>
+            Called when a lumps buffer pointer is changed
+            </summary>
+            <param name="buffer"></param>
+            <param name="interpter"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.LumpReader.CallAutoParser(RCSHTools.Doom.Interpeters.AutoParseLumpMethod)">
+            <summary>
+            Adds support for the IAutoParseLump interface
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.LumpReader.Save">
+            <summary>
+            Saves the data
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.TextInterpeter">
+            <summary>
+            Allows access to a lumps data as text
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.TextInterpeter.TextEncoding">
+            <summary>
+            The encoding the text is
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.TextInterpeter.Text">
+            <summary>
+            The translated text from the lump
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.TextIntepeterEncoding.Default">
+            <summary>
+            The default translation
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.TextIntepeterEncoding.ASCII">
+            <summary>
+            ASCII translation
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.TextIntepeterEncoding.UTF8">
+            <summary>
+            UTF-8 translation
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.Maps.LineDefenition">
+            <summary>
+            Line defenition information.
+            More info: https://zdoom.org/wiki/Linedef
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenition.NO_SIDEDEF">
+            <summary>
+            Value for no side def
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.LineDefenition.StartIndex">
+            <summary>
+            The index of the start vertex of the line (v1 in UDMF)
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.LineDefenition.EndIndex">
+            <summary>
+            The index of the end vertex of the line (v2 in UDMF)
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.LineDefenition.Flags">
+            <summary>
+            The flags of this line
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.LineDefenition.Type">
+            <summary>
+            <b>Only in doom map format</b>, The type of the line, not used in Hexen format
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.LineDefenition.Sector">
+            <summary>
+            <b>Only in doom map format</b>, The tag of the sector this line is part of
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.LineDefenition.ActionSpecial">
+            <summary>
+            <b>Only in hexen map format</b>, The action special of this line 
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.LineDefenition.ActionArguments">
+            <summary>
+            <b>Only in hexen map format</b>, The arguements for the action special , up to 5 arguments
+            See: https://zdoom.org/wiki/Action_specials
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.LineDefenition.RightSideDef">
+            <summary>
+            Index of the right side defenition
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.LineDefenition.LeftSideDef">
+            <summary>
+            Index of the left side defenition
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.Maps.LineDefenition.#ctor(System.IO.MemoryStream,RCSHTools.Doom.Maps.SpecificationMode)">
+            <summary>
+            Opens a map line defenition in a Doom or Hexen format
+            </summary>
+            <param name="stream"></param>
+            <param name="specifiactions"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.Maps.LineDefenition.HasLeft">
+            <summary>
+            Does this line has a left side def
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.Maps.LineDefenition.HasRight">
+            <summary>
+            Does this line has a right side def
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Doom.Maps.LineDefenitionFlags">
+            <summary>
+            <see cref="T:RCSHTools.Doom.Maps.LineDefenition"/> Flags
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.Blocking">
+            <summary>
+            Blocks players and monsters
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.BlockMonsters">
+            <summary>
+            Blocks only monsters
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.TwoSide">
+            <summary>
+            Is the wall 2 sided
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.DontPegTop">
+            <summary>
+            The wall has an unpegged top
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.DontPegBottom">
+            <summary>
+            The wall has an unpegged bottom
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.Secret">
+            <summary>
+            The wall is a secret
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.SoundBlock">
+            <summary>
+            The wall blocks sound
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.DontDraw">
+            <summary>
+            The wall will never appear on the automap
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.Mappped">
+            <summary>
+            The wall always appear on the automap
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.Railing">
+            <summary>
+            Line is railing (0x0200)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.PassUse">
+            <summary>
+            Passes use action (0x0200)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.LineDefenitionFlags.RepeatSpecial">
+            <summary>
+            Can be activated more that once (0x0200)
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.Maps.SpecificationMode">
+            <summary>
+            Represents map specifications in differnt games
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.SpecificationMode.Doom">
+            <summary>
+            Doom map specifiactions
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.SpecificationMode.Hexen">
+            <summary>
+            Hexen map specifiaction
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.SpecificationMode.UDMF">
+            <summary>
+            UDMF map specifiaction, ussually in text
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.Maps.UDMF.UDMFLineDefenitionProperties">
+            <summary>
+            <see cref="T:RCSHTools.Doom.Maps.LineDefenition"/> properties on udmf maps.
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.UDMF.UDMFLineDefenitionProperties.Alpha">
+            <summary>
+            The translucency of the line defaults to 1 (alpha:<see cref="T:System.Single"/>)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.UDMF.UDMFLineDefenitionProperties.Arguemnt0String">
+            <summary>
+            Alternate string version of arg0 used for named scripts (arg0str:<see cref="T:System.String"/>)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.UDMF.UDMFLineDefenitionProperties.Argument0">
+            <summary>
+            The first argument (arg0:<see cref="T:System.Int32"/>)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.UDMF.UDMFLineDefenitionProperties.Argument1">
+            <summary>
+            The second argument (arg1:<see cref="T:System.Int32"/>)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.UDMF.UDMFLineDefenitionProperties.Argument2">
+            <summary>
+            The third argument (arg2:<see cref="T:System.Int32"/>)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.UDMF.UDMFLineDefenitionProperties.Argument3">
+            <summary>
+            The fourth argument (arg3:<see cref="T:System.Int32"/>)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.UDMF.UDMFLineDefenitionProperties.Argument4">
+            <summary>
+            The fifth argument (arg4:<see cref="T:System.Int32"/>)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.UDMF.UDMFLineDefenitionProperties.Comment">
+            <summary>
+            A comment used by the authors, ignored by the engines (comment:<see cref="T:System.String"/>)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.UDMF.UDMFLineDefenitionProperties.LockNumber">
+            <summary>
+            Line special is locked (locknumber:<see cref="T:System.Int32"/>)
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.UDMF.UDMFSideDefenitionProperties.Alpha">
+            <summary>
+            The alpha of the wall (alpha:<see cref="T:System.Single"/>
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.Maps.Sector">
+            <summary>
+            Represents a map sector.
+            See: https://zdoom.org/wiki/Sector
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.Sector.FloorHeight">
+            <summary>
+            The floor height
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.Sector.CeilingHeight">
+            <summary>
+            The ceiling height
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.Sector.FloorTexture">
+            <summary>
+            The texture of the floor
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.Sector.CeilingTexture">
+            <summary>
+            The texture of ceiling
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.Sector.LightLevel">
+            <summary>
+            The Light level of the sector
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.Maps.SideDefenition">
+            <summary>
+            Represnts a walls Sidedef
+            See: https://zdoom.org/wiki/Sidedef
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.SideDefenition.OffsetX">
+            <summary>
+            The texture's x offset
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.SideDefenition.OffsetY">
+            <summary>
+            The texture's y offset
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.SideDefenition.TopTexture">
+            <summary>
+            The top texture of the side
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.SideDefenition.BottomTexture">
+            <summary>
+            The bottom texture of the side
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.SideDefenition.Texture">
+            <summary>
+            The middle texture of the side
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.SideDefenition.Sector">
+            <summary>
+            The index of the sides sector
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.SideDefenition.Start">
+            <summary>
+            Index of the start vertex
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Maps.SideDefenition.End">
+            <summary>
+            Index of the end vertex
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.Maps.SideDefenition.#ctor(System.IO.MemoryStream,RCSHTools.Doom.Maps.SpecificationMode,RCSHTools.Doom.Maps.LineDefenition)">
+            <summary>
+            Creates a side defenition from a stream
+            </summary>
+            <param name="stream"></param>
+            <param name="spec"></param>
+            <param name="line"></param>
+        </member>
+        <member name="T:RCSHTools.Doom.Maps.Vertex">
+            <summary>
+            Represents a coordinate in a map
+            https://zdoom.org/wiki/Vertex
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.Maps.Vertex.VERTEX_REGEX">
+            <summary>
+            The regex used to parse UDMF map vertecies
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.WadAccessModeException">
+            <summary>
+            Thrown when an additive opertion is attempted on a non modifiable wad file
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.WadAccessModeException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:RCSHTools.Doom.NoTexturePoolInWadException">
+            <summary>
+            Thrown when there is no texture pool in the 
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.NoTexturePoolInWadException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:RCSHTools.Doom.DirectoryMarkers">
+            <summary>
+            Represents directory markers
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.TexturesZDoom">
+            <summary>
+            (TX_START -> TX_END) Texture markers used with ZDoom engine
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.Sprites">
+            <summary>
+            (S_START -> S_END) Sprites
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.SpritesUserDefined">
+            <summary>
+            (SS_START -> SS_END) Sprites on user defined wads
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.TexturesScaledZDoom">
+            <summary>
+            (HI_START -> HI_END) Scaled Texture used with ZDoom engine
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.Flats">
+            <summary>
+            (F_START -> F_END) Flats
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.FlatsShareware">
+            <summary>
+            (F1_START -> F1_END) Flats used with heretic and hexen
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.FlatsRegistered">
+            <summary>
+            (F2_START -> F2_END) Flats used with Heretic and Hexen
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.FlatsUserDefined">
+            <summary>
+            (FF_START -> FF_END) Flats in user defined wads
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.Patches">
+            <summary>
+            (P_START -> P_END) Patches, ZDoom ignores this section 
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.PatchesShareware">
+            <summary>
+            (P1_START -> P1_END) Patches used in Heretic and Hexen
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.PatchesRegistered">
+            <summary>
+            (P2_START -> P2_END) Patches used in Heretic and Hexen
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.DirectoryMarkers.PatchesDoom2">
+            <summary>
+            (P3_START -> P3_END) Patches used in Doom 2
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.Lump">
+            <summary>
+            Represents a lump
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Lump.Name">
+            <summary>
+            The name of the lump, Must be all uppercase and digit (8 characters long)
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Lump.Size">
+            <summary>
+            The size of the buffer
+            </summary>
+        </member>
+        <member name="E:RCSHTools.Doom.Lump.OnLumpSaved">
+            <summary>
+            Called when the lump is modified
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.Lump.File">
+            <summary>
+            The wad file this texture is from
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.#ctor(System.String,RCSHTools.Doom.WadFile)">
+            <summary>
+            Creates a zero size lump and names it, Used for markers an map headers
+            </summary>
+            <param name="name"></param>
+            <param name="file"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.#ctor(System.String,System.Byte[],RCSHTools.Doom.WadFile)">
+            <summary>
+            Creates an named lump from a an array
+            </summary>
+            <param name="name"></param>
+            <param name="buffer"></param>
+            <param name="file"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.#ctor(System.String,System.Byte[],System.UInt32,System.UInt32,RCSHTools.Doom.WadFile)">
+            <summary>
+            Creates a named lump from an array
+            </summary>
+            <param name="name">Name of the lump</param>
+            <param name="buffer">The array to create from</param>
+            <param name="offset">Where to start read from the array</param>
+            <param name="size">The amount of bytes to read from the array</param>
+            <param name="file"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.Attach(RCSHTools.Doom.WadFile)">
+            <summary>
+            Attaches this lump to a file
+            </summary>
+            <param name="file"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.CopyRaw">
+            <summary>
+            Returns a copy of the buffer the lump uses
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.RawStream">
+            <summary>
+            Creates a stream with the buffer data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.Write(System.Byte[],RCSHTools.Doom.LumpReader)">
+            <summary>
+            Override the buffer pointer of the lump, nessary to save resacled arrays
+            </summary>
+            <param name="buffer"></param>
+            <param name="interpter"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.ReadInt32(System.Int32)">
+            <summary>
+            Reads an <see cref="T:System.Int32"/> from the lump
+            </summary>
+            <param name="startIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.ReadInt16(System.Int32)">
+            <summary>
+            Reads an <see cref="T:System.Int16"/> from the lump
+            </summary>
+            <param name="startIndex"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.ReadByte(System.Int32)">
+            <summary>
+            Reads a byte from the bufer
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.ReadString(System.Int32,System.Int32)">
+            <summary>
+            Reads a <see cref="T:System.String"/> from lump
+            </summary>
+            <param name="startIndex"></param>
+            <param name="length"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.Lump.GetByteStream">
+            <summary>
+            returns a new <see cref="T:System.IO.MemoryStream"/> of the lump
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Doom.LumpSavedEventHandler">
+            <summary>
+            Handler for when a lump is modified permentantly by a interpeter
+            </summary>
+            <param name="buffer"></param>
+            <param name="modifiedBy"></param>
+        </member>
+        <member name="T:RCSHTools.Doom.LumpPtr">
+            <summary>
+            Represnets a pointer to a lump
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.LumpPtr.Name">
+            <summary>
+            The name of the lump that is pointed to
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.LumpPtr.Lump">
+            <summary>
+            The lump that is pointed to
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.MapTexture">
+            <summary>
+            Represents a map texture
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.MapTexture.Name">
+            <summary>
+            The nameof the texture
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.MapTexture.Masked">
+            <summary>
+            Unused
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.MapTexture.Width">
+            <summary>
+            The width of the texutre
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.MapTexture.Height">
+            <summary>
+            The height of the texture
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.MapTexture.Patches">
+            <summary>
+            The amount of patches in the map
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.MapTexture.#ctor(RCSHTools.Doom.WadFile.WadTexturePool,System.IO.MemoryStream)">
+            <summary>
+            Creates a new map texture from a memeory stream
+            </summary>
+            <param name="texturePool"></param>
+            <param name="stream"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.MapTexture.GetSubPatch(System.Int32)">
+            <summary>
+            Gets a sub patch of this texture 
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.MapTexture.GetBitmap">
+            <summary>
+            Returns a bitmap of the colors outputed by the final wall texture 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Doom.PatchData">
+            <summary>
+            Represents a patch data under a <see cref="T:RCSHTools.Doom.MapTexture"/>
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.PatchData.OriginX">
+            <summary>
+            The X origin of the texture
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.PatchData.OriginY">
+            <summary>
+            The Y origin of the texture
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.PatchData.PatchIndex">
+            <summary>
+            The index of the patch in the <see cref="T:RCSHTools.Doom.WadFile.WadTexturePool"/>
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.PatchData.StepDir">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.PatchData.ColorMap">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.PatchData.#ctor(System.IO.MemoryStream)">
+            <summary>
+            Creates a new patch data from a stream
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="T:RCSHTools.Doom.WadFile">
+            <summary>
+            Represents a .wad file
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.WadFile.WadTexturePool">
+            <summary>
+            A collection of texture inside the wad
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.WadTexturePool.#ctor(RCSHTools.Doom.WadFile)">
+            <summary>
+            Creates a new empty texture pool
+            </summary>
+            <param name="wad"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.WadTexturePool.#ctor(RCSHTools.Doom.WadFile,RCSHTools.Doom.Lump,RCSHTools.Doom.Lump)">
+            <summary>
+            Creates a new texture pool
+            </summary>
+            <param name="wad"></param>
+            <param name="texture1"></param>
+            <param name="pnames"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.WadTexturePool.GetTextureLump(System.String)">
+            <summary>
+            Gets a texture lump from the pool
+            </summary>
+            <param name="lump"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.WadTexturePool.GetTextureLump(System.Int32)">
+            <summary>
+            <inheritdoc cref="M:RCSHTools.Doom.WadFile.WadTexturePool.GetTextureLump(System.String)"/>
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.WadTexturePool.GetMapTexture(System.String)">
+            <summary>
+            Gets a <see cref="T:RCSHTools.Doom.MapTexture"/> from the pool
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.WadTexturePool.AddTexture(System.String,System.String)">
+            <summary>
+            Adds a texture to the pool
+            </summary>
+            <param name="name"></param>
+            <param name="lump"></param>
+        </member>
+        <member name="P:RCSHTools.Doom.WadFile.WadTexturePool.Item(System.String)">
+            <summary>
+            Gets a texture by its name
+            </summary>
+            <param name="texture"></param>
+            <returns></returns>
+        </member>
+        <member name="P:RCSHTools.Doom.WadFile.WadTexturePool.Item(System.Int32)">
+            <summary>
+            Gets a texture by its index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Doom.WadFile.WadHeader">
+            <summary>
+            Reprensts a .Wad file header
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.WadFile.LumpPtrRange">
+            <summary>
+            Represents a marker range
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.WadFile.Type">
+            <summary>
+            The type of the wad file
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.WadFile.Items">
+            <summary>
+            The amount of lumps in the file
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.WadFile.HasTexturePool">
+            <summary>
+            Does this wad has a texture pool (Generally IWad should have one, but PWad might not)
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.WadFile.TexturePool">
+            <summary>
+            The texture pool of this wad (not all wads have one)
+            </summary>
+        </member>
+        <member name="P:RCSHTools.Doom.WadFile.Item(System.String)">
+            <summary>
+            Loads a <see cref="T:RCSHTools.Doom.Lump"/>  by its name
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:RCSHTools.Doom.WadFile.Item(System.Int32)">
+            <summary>
+            Loads a <see cref="T:RCSHTools.Doom.Lump"/> by its index
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.#ctor">
+            <summary>
+            Creates a new writable empty pwad file
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.#ctor(RCSHTools.Doom.WadType)">
+            <summary>
+            Creates a new writable emprty wad file with a given type
+            </summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.#ctor(System.String)">
+            <summary>
+            Creates a new extendable wad file from path
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.#ctor(System.String,RCSHTools.Doom.WadReadMode)">
+            <summary>
+            Opens a wad file from path
+            </summary>
+            <param name="path">Path to the file</param>
+            <param name="readmode"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.AllocateLump(System.String,System.UInt32,System.UInt32)">
+            <summary>
+            Allocates a lump from the lump data
+            </summary>
+            <param name="name">The name of the lump</param>
+            <param name="start">Where does it start</param>
+            <param name="size">What is its size</param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.Pallete(System.Int32)">
+            <summary>
+            Gets a color pallete for the PLAYPAL lump
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.IndexOf(System.String)">
+            <summary>
+            Returns the index of a lump
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.GetRangeEnd(RCSHTools.Doom.DirectoryMarkers)">
+            <summary>
+            Returns the end of a range
+            </summary>
+            <param name="marker"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.GetRangeStart(RCSHTools.Doom.DirectoryMarkers)">
+            <summary>
+            Returns the start of a range
+            </summary>
+            <param name="marker"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.SeekFirst(System.String,System.String[])">
+            <summary>
+            Seeks the lumps by given their names and returns the first one it finds
+            </summary>
+            <param name="name"></param>
+            <param name="otherNames"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.Save">
+            <summary>
+            Saves the .wad file.
+            Only usable if used with an opened wad file
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.Save(System.String)">
+            <summary>
+            Saves the .wad file into a specified file
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.LoadMap(System.String,RCSHTools.Doom.Maps.SpecificationMode)">
+            <summary>
+            Loads a map from the wad file
+            </summary>
+            <param name="name"></param>
+            <param name="mode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.LoadMapTexture(System.String)">
+            <summary>
+            Loads a texture from the wad file
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.Add(RCSHTools.Doom.DirectoryMarkers)">
+            <summary>
+            Adds a range to the wad
+            </summary>
+            <param name="range">The range type to add</param>
+            <returns></returns>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.Add(RCSHTools.Doom.Lump)">
+            <summary>
+            Adds a lump to the file
+            </summary>
+            <param name="lump"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.Add(RCSHTools.Doom.LumpReader)">
+            <summary>
+            Adds a lump to the file
+            </summary>
+            <param name="lump"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.Add(RCSHTools.Doom.DirectoryMarkers,RCSHTools.Doom.Lump[])">
+            <summary>
+            Adds lumps into a range
+            </summary>
+            <param name="range"></param>
+            <param name="lumps"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.Add(RCSHTools.Doom.DirectoryMarkers,RCSHTools.Doom.LumpReader[])">
+            <summary>
+            Adds lumps into a range
+            </summary>
+            <param name="range"></param>
+            <param name="lumps"></param>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.NewTexturePool">
+            <summary>
+            Removes the old texture pool and replaces it with a new one
+            </summary>
+        </member>
+        <member name="M:RCSHTools.Doom.WadFile.StackPWad(RCSHTools.Doom.WadFile)">
+            <summary>
+            Stacks a new Pwad ontop of this wad (Adds and Overrides data)
+            </summary>
+            <param name="pwad"></param>
+            <returns></returns>
+        </member>
+        <member name="T:RCSHTools.Doom.WadType">
+            <summary>
+            The <see cref="T:RCSHTools.Doom.WadFile"/> type
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.WadType.IWad">
+            <summary>
+            Represnets an IWAD wad file
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.WadType.PWad">
+            <summary>
+            Represnets a PWAD wad file
+            </summary>
+        </member>
+        <member name="T:RCSHTools.Doom.WadReadMode">
+            <summary>
+            How should the wad file be accessed
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.WadReadMode.Readonly">
+            <summary>
+            The wad can only be read from
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.WadReadMode.Extendable">
+            <summary>
+            The wad can be overriden with PWad files, but cant be saved
+            </summary>
+        </member>
+        <member name="F:RCSHTools.Doom.WadReadMode.Writable">
+            <summary>
+            The wad can modified, but not overriden by other Pwad files
+            </summary>
+        </member>
+    </members>
+</doc>

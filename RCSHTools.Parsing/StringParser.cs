@@ -65,6 +65,7 @@ namespace RCSHTools.Parsing
         /// <summary>
         /// <inheritdoc cref="ReadPair(char, char)"/>
         /// </summary>
+        /// <param name="pair"></param>
         /// <param name="p"></param>
         /// <returns></returns>
         public string ReadPair(Tuple<char, char> pair)
@@ -74,6 +75,8 @@ namespace RCSHTools.Parsing
         /// <summary>
         /// Reads all data between two character
         /// </summary>
+        /// <param name="opener"></param>
+        /// <param name="closer"></param>
         /// <param name="p"></param>
         /// <returns></returns>
         public string ReadPair(char opener, char closer)
@@ -117,6 +120,19 @@ namespace RCSHTools.Parsing
             memory.Push(index);
             sb.Clear();
             while (CanRead && Peek() != closer) sb.Append(Read());
+
+            return sb.ToString();
+        }
+        /// <summary>
+        /// Reads until a condition is reached
+        /// </summary>
+        /// <param name="predicate">Should return true when needs to stop reading</param>
+        /// <returns></returns>
+        public string ReadUntil(Predicate<char> predicate)
+        {
+            memory.Push(index);
+            sb.Clear();
+            while (CanRead && !predicate(Peek())) sb.Append(Read());
 
             return sb.ToString();
         }
@@ -226,6 +242,10 @@ namespace RCSHTools.Parsing
         }
         #endregion
 
+        /// <summary>
+        /// Returns a string representation of the string parser
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return str;
